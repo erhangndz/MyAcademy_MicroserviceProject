@@ -2,7 +2,6 @@
 using ECommerce.Catalog.Entities;
 using ECommerce.Catalog.Repositories.CategoryRepositories;
 using Mapster;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Catalog.Controllers
