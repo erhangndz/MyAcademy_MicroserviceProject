@@ -1,7 +1,11 @@
+using ECommerce.Order.Application.Extensions;
+using ECommerce.Order.Persistence.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddPersistence(builder.Configuration)
+                .AddApplication();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
