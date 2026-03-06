@@ -1,4 +1,5 @@
-Catalog => https://localhost:7000
-Order   => https://localhost:7001
+Catalog			=> https://localhost:7000
+Order			=> https://localhost:7001
+IdentityServer  => https://localhost:5001
 
 Portainer Password : ErhanGunduz1905+
