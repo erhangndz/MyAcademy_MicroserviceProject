@@ -4,55 +4,81 @@
 
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using IdentityServer4;
 
 namespace ECommerce.IdentityServer
 {
     public static class Config
     {
+
+        public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
+        {
+            new ApiResource("CatalogResource"){ Scopes={"CatalogFullPermission","CatalogReadPermission"}},
+
+            new ApiResource("OrderResource"){Scopes={"OrderFullPermission"}}
+
+
+        };
+
+
+
+
         public static IEnumerable<IdentityResource> IdentityResources =>
                    new IdentityResource[]
                    {
                 new IdentityResources.OpenId(),
+                new IdentityResources.Email(),
                 new IdentityResources.Profile(),
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("scope1"),
-                new ApiScope("scope2"),
+                new ApiScope("CatalogFullPermission","Full Authorization For Catalog Operations"),
+                new ApiScope("CatalogReadPermission","Read Authorization For Catalog Operations"),
+                 new ApiScope("OrderFullPermission","Full Authorization For Order Operations"),
+                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
         public static IEnumerable<Client> Clients =>
             new Client[]
             {
-                // m2m client credentials flow client
+                //Visitor 
                 new Client
                 {
-                    ClientId = "m2m.client",
-                    ClientName = "Client Credentials Client",
-
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
-
-                    AllowedScopes = { "scope1" }
+                    ClientId= "ECommerceVisitorId",
+                    ClientName= "ECommerce Visitor",
+                    AllowedGrantTypes= GrantTypes.ClientCredentials,
+                    ClientSecrets= {new Secret("ecommercesecret".Sha256())},
+                    AllowedScopes= { "CatalogReadPermission",
+                    IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.LocalApi.ScopeName}
                 },
 
-                // interactive client using code flow + pkce
+                //Admin
                 new Client
                 {
-                    ClientId = "interactive",
-                    ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
-
-                    AllowedGrantTypes = GrantTypes.Code,
-
-                    RedirectUris = { "https://localhost:44300/signin-oidc" },
-                    FrontChannelLogoutUri = "https://localhost:44300/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
-
-                    AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "scope2" }
-                },
+                    ClientId ="ECommerceAdminId",
+                    ClientName= "ECommerce Admin",
+                    AllowedGrantTypes= GrantTypes.ResourceOwnerPassword,
+                    ClientSecrets= {new Secret("ecommercesecret".Sha256()) },
+                    AllowedScopes=
+                    {
+                        "CatalogFullPermission",
+                        "OrderFullPermission",
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.LocalApi.ScopeName
+                    },
+                    AccessTokenLifetime= 600,
+                    
+                    
+                    
+                    
+                }
             };
     }
 }
