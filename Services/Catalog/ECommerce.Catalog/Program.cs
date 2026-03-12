@@ -30,7 +30,7 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp =>
 
 builder.Services.AddControllers(opt =>
 {
-    //opt.Filters.Add(new AuthorizeFilter());
+    opt.Filters.Add(new AuthorizeFilter());
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
