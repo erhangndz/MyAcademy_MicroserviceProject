@@ -15,9 +15,11 @@ namespace ECommerce.IdentityServer
         {
             new ApiResource("CatalogResource"){ Scopes={"CatalogFullPermission","CatalogReadPermission"}},
 
-            new ApiResource("OrderResource"){Scopes={"OrderFullPermission"}},
+            new ApiResource("OrderResource"){ Scopes={"OrderFullPermission"}},
 
-            new ApiResource("BasketResource"){Scopes={"BasketFullPermission"}}
+            new ApiResource("BasketResource"){ Scopes={"BasketFullPermission"}},
+
+             new ApiResource("DiscountResource"){ Scopes={"DiscountFullPermission"}}
 
 
         };
@@ -40,6 +42,7 @@ namespace ECommerce.IdentityServer
                 new ApiScope("CatalogReadPermission","Read Authorization For Catalog Operations"),
                  new ApiScope("OrderFullPermission","Full Authorization For Order Operations"),
                  new ApiScope("BasketFullPermission","Full Authorization For Basket Operations"),
+                 new ApiScope("DiscountFullPermission","Full Authorization For Discount Operations"),
                  new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -72,16 +75,17 @@ namespace ECommerce.IdentityServer
                         "CatalogFullPermission",
                         "OrderFullPermission",
                         "BasketFullPermission",
+                        "DiscountFullPermission",
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.LocalApi.ScopeName
                     },
                     AccessTokenLifetime= 600,
-                    
-                    
-                    
-                    
+
+
+
+
                 }
             };
     }

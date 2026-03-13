@@ -1,4 +1,5 @@
 ﻿using ECommerce.Discount.DataAccess.Context;
+using ECommerce.Discount.DataAccess.Repositories.Coupons;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,9 @@ namespace ECommerce.Discount.DataAccess.Extensions
             {
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
             });
+
+
+            services.AddScoped<ICouponRepository, CouponRepository>();
         }
 
 

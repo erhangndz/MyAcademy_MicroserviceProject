@@ -1,6 +1,7 @@
 Catalog			=> https://localhost:7000
 Order			=> https://localhost:7001
 Basket			=> https://localhost:7002
+Discount		=> https://localhost:7003
 IdentityServer  => https://localhost:5001
 
 Portainer Password : ErhanGunduz1905+
