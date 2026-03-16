@@ -1,0 +1,19 @@
+﻿@using ECommerce.WebUI.DTOs.Catalog.CategoryDtos
+@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Kategoriler</h1>
+
+<ul>
+
+    @foreach (var item in Model)
+    {
+        <li>@item.Name</li>
+    }
+
+
+</ul>
+

@@ -1,0 +1,18 @@
+﻿@using ECommerce.WebUI.DTOs.Discount.CouponDtos
+@model List<ResultCouponDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>İndirim Kuponları</h1>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        
+
+    <li>@item.Code -  %@item.DiscountRate  <strong>Son Geçerlilik Tarihi: @item.ExpireDate.ToShortDateString() </strong>  </li>
+
+    }
+</ul>
