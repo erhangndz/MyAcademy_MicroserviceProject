@@ -3,6 +3,7 @@
     public class ServiceApiSettings
     {
         public string IdentityServerUrl { get; set; }
+        public string ApiGatewayUrl { get; set; }
         public ServiceApi Catalog { get; set; }
         public ServiceApi Basket { get; set; }
         public ServiceApi Discount { get; set; }

@@ -9,7 +9,7 @@ namespace ECommerce.Catalog.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+  
     public class CategoriesController(ICategoryRepository _categoryRepository) : ControllerBase
     {
 

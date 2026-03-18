@@ -1,0 +1,21 @@
+﻿@using ECommerce.WebUI.DTOs.IdentityServer
+@model LoginDto
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Login</h1>
+
+<form method="post">
+    <label>Kullanıcı Adı</label>
+    <input type="text" asp-for="Username" class="form-control" required/>
+    <br />
+    <label>Şifre</label>
+    <input type="password" asp-for="Password" class="form-control" required />
+    <br />
+
+    <span class="text-danger">@Html.ValidationSummary()</span>
+
+    <button class="btn btn-dark">Giriş Yap</button>
+</form>
